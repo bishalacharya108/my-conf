@@ -1,0 +1,26 @@
+# macOS
+.DS_Store
+
+# Node.js / npm
+**/nodemon.json
+simple-update-notifier/
+
+# Firebase / sensitive configs
+configstore/
+configstore/*
+**/firebase-tools.json
+
+# tmux plugins
+tmux/plugins/
+tmux/plugins/*
+
+# clangd (if directory)
+clangd/
+
+# General cache/IDE files
+.vscode/
+.idea/
+*.log
+node_modules/
+dist/
+.env
