@@ -1,0 +1,15 @@
+pane	configs-session	0	1	:*	0	Bishals-MacBook-Air.local	:/Users/bishal/.config/nvim	1	nvim	:nvim .
+pane	cp-problem-solving-session	0	1	:*	0	Bishals-MacBook-Air.local	:/Users/bishal/.config/tmux	1	zsh	:
+pane	go-session	0	0	:-	0	Bishals-MacBook-Air.local	:/Users/bishal/Documents/Code/go/fem-htmx-proj	1	nvim	:nvim .
+pane	go-session	1	1	:*	0	Bishals-MacBook-Air.local	:/Users/bishal/Documents/Code/go/fem-htmx-proj	1	zsh	:
+pane	search-transcript-project	0	0	:-	0	Bishals-MacBook-Air.local	:/Users/bishal/Documents/Code/projects/search-transcripts-archive	1	nvim	:nvim .
+pane	search-transcript-project	1	1	:*	0	Bishals-MacBook-Air.local	:/Users/bishal/Documents/Code/projects/search-transcripts-archive	1	node	:npm run dev   
+pane	search-transcript-project	2	0	:	0	Bishals-MacBook-Air.local	:/Users/bishal/Documents/Code/projects/search-transcripts-archive	1	lazygit	:lazygit
+window	configs-session	0	:nvim	1	:*	c4c0,114x27,0,0,3	:
+window	cp-problem-solving-session	0	:zsh	1	:*	c4bf,114x27,0,0,2	:
+window	go-session	0	:nvim	0	:-	c4be,114x27,0,0,1	:
+window	go-session	1	:server-air	1	:*	c4c1,114x27,0,0,4	off
+window	search-transcript-project	0	:nvim	0	:-	c4bd,114x27,0,0,0	:
+window	search-transcript-project	1	:node	1	:*	c4c2,114x27,0,0,5	:
+window	search-transcript-project	2	:github	0	:	c4c3,114x27,0,0,6	off
+state	search-transcript-project	configs-session

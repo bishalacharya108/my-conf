@@ -2,7 +2,13 @@ local lspconfig = require("lspconfig")
 local cmp = require("cmp")
 local cmp_lsp = require("cmp_nvim_lsp")
 
--- Capabilities for completion
+-- Optional: Try to load navic safely
+local navic_ok, navic = pcall(require, "nvim-navic")
+
+-- Load VSCode-style snippets from friendly-snippets
+require("luasnip.loaders.from_vscode").lazy_load()
+
+-- Capabilities
 local capabilities = vim.tbl_deep_extend(
     "force",
     {},
@@ -10,55 +16,54 @@ local capabilities = vim.tbl_deep_extend(
     cmp_lsp.default_capabilities()
 )
 
--- On Attach Function: keymaps + diagnostics config
+-- ccls
+-- Add this after your mason-lspconfig setup
+lspconfig.ccls.setup({
+  capabilities = capabilities,
+  on_attach = on_attach,
+  init_options = {
+    compilationDatabaseDirectory = "build", -- For compile_commands.json
+    cache = {
+      directory = ".ccls-cache", -- Cache dir (optional)
+    },
+    clang = {
+      extraArgs = { 
+        "-isysroot", "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk",
+        "-std=c++17"
+      },
+    },
+  },
+  filetypes = { "c", "cpp", "objc", "objcpp" },
+})
+
+-- On Attach
 local on_attach = function(client, bufnr)
-    -- Verify leader key is set (critical!)
     if not vim.g.mapleader then
-        vim.notify("Warning: vim.g.mapleader was nil! Defaulting to space", vim.log.levels.WARN)
         vim.g.mapleader = " "
+        vim.notify("Leader key defaulted to space", vim.log.levels.WARN)
     end
 
-    -- Debugging output
-    print(string.format(
-        "LSP Attach: buffer=%d, filetype=%s, leader='%s', client=%s",
-        bufnr,
-        vim.bo[bufnr].filetype,
-        vim.g.mapleader,
-        client.name
-    ))
-
-    -- Improved buf_map function with validation
     local function buf_map(mode, lhs, rhs, opts)
         opts = opts or {}
         opts.buffer = bufnr
         opts.desc = opts.desc or ("LSP: " .. tostring(rhs))
-
-        -- Verify the RHS is callable
-        if type(rhs) == "string" then
-            vim.notify("Warning: RHS should be a function for LSP mappings", vim.log.levels.WARN)
-            return
-        end
-
-        -- Actually set the mapping
-        local success, err = pcall(vim.keymap.set, mode, lhs, rhs, opts)
-        if not success then
-            vim.notify(string.format("Failed to set mapping %s: %s", lhs, err), vim.log.levels.ERROR)
-        else
-            print("Set mapping:", mode, lhs, opts.desc)
+        if type(rhs) == "string" then return end
+        local ok, err = pcall(vim.keymap.set, mode, lhs, rhs, opts)
+        if not ok then
+            vim.notify("Mapping failed: " .. err, vim.log.levels.ERROR)
         end
     end
 
-    -- LSP keybindings with explicit checks
-    buf_map("n", "K", function()
-        print("Executing hover()") -- Debug
-        vim.lsp.buf.hover()
-    end, { desc = "Hover Info" })
-
+    buf_map("n", "K", vim.lsp.buf.hover, { desc = "Hover" })
     buf_map("n", "gd", vim.lsp.buf.definition, { desc = "Go to Definition" })
     buf_map("n", "gr", vim.lsp.buf.references, { desc = "Go to References" })
     buf_map("n", "<leader>ca", vim.lsp.buf.code_action, { desc = "Code Action" })
 
-    -- Diagnostics setup
+    -- Attach navic if supported and loaded
+    if navic_ok and client.server_capabilities.documentSymbolProvider then
+        navic.attach(client, bufnr)
+    end
+
     vim.diagnostic.config({
         virtual_text = true,
         underline = true,
@@ -72,7 +77,7 @@ local on_attach = function(client, bufnr)
     })
 end
 
--- Setup mason
+-- Setup Mason
 require("mason").setup()
 require("mason-lspconfig").setup({
     ensure_installed = {
@@ -112,7 +117,6 @@ require("mason-lspconfig").setup({
             end
         end,
 
-        -- Custom Lua LS config
         ["lua_ls"] = function()
             lspconfig.lua_ls.setup({
                 capabilities = capabilities,
@@ -152,6 +156,7 @@ cmp.setup({
         ["<C-p>"] = cmp.mapping.select_prev_item(cmp_select),
         ["<C-n>"] = cmp.mapping.select_next_item(cmp_select),
         ["<C-Space>"] = cmp.mapping.complete(),
+        ['<C-y>'] = nil,
     }),
     sources = cmp.config.sources({
         { name = "nvim_lsp" },
@@ -181,7 +186,7 @@ require("conform").setup({
 -- UI feedback
 require("fidget").setup({})
 
--- Float window on hover
+-- Diagnostics float on hover
 vim.o.updatetime = 250
 vim.cmd([[autocmd CursorHold * lua vim.diagnostic.open_float(nil, { focusable = false })]])
 

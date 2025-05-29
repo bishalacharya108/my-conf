@@ -24,3 +24,10 @@ end, { desc = "Format with Conform" })
 
 --for git preview from gitsigns
 vim.keymap.set("n", "<leader>gp", ":Gitsigns preview_hunk<CR>", { desc = "Gitsigns preview as hunk" })
+-- emmet remap
+-- vim.g.user_emmet_leader_key = '<C-e>'
+vim.keymap.set('n', '<leader>ca', vim.lsp.buf.code_action, { desc = "Global Code Action" })
+vim.keymap.set("n", "<leader>q", vim.diagnostic.setloclist, { desc = "Open diagnostics in location list" })
+vim.keymap.set("n", "<leader>c", ":copen<CR>", { desc = "Open quickfix list" })
+vim.keymap.set("n", "<leader>cc", ":cclose<CR>", { desc = "Close quickfix list" })
+

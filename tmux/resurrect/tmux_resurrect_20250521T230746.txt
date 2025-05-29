@@ -1,0 +1,9 @@
+pane	configs-session	0	1	:*	0	Bishals-MacBook-Air.local	:/Users/bishal/.config/tmux	1	zsh	:
+pane	cp-problem-solving-session	0	1	:*	0	Bishals-MacBook-Air.local	:/Users/bishal/.config/tmux	1	zsh	:
+pane	go-session	0	1	:*	0	Bishals-MacBook-Air.local	:/Users/bishal/Documents/Code/go/fem-htmx-proj	1	zsh	:
+pane	search-transcript-project	0	1	:*	0	Bishals-MacBook-Air.local	:/Users/bishal/.config/tmux	1	zsh	:
+window	configs-session	0	:zsh	1	:*	c4c0,114x27,0,0,3	:
+window	cp-problem-solving-session	0	:zsh	1	:*	c4bf,114x27,0,0,2	:
+window	go-session	0	:zsh	1	:*	c4be,114x27,0,0,1	:
+window	search-transcript-project	0	:zsh	1	:*	c4bd,114x27,0,0,0	:
+state	go-session	search-transcript-project
