@@ -95,6 +95,11 @@ _G.packer_plugins = {
     path = "/Users/bishal/.local/share/nvim/site/pack/packer/start/cmp-buffer",
     url = "https://github.com/hrsh7th/cmp-buffer"
   },
+  ["cmp-cmdline"] = {
+    loaded = true,
+    path = "/Users/bishal/.local/share/nvim/site/pack/packer/start/cmp-cmdline",
+    url = "https://github.com/hrsh7th/cmp-cmdline"
+  },
   ["cmp-nvim-lsp"] = {
     loaded = true,
     path = "/Users/bishal/.local/share/nvim/site/pack/packer/start/cmp-nvim-lsp",
@@ -163,7 +168,6 @@ _G.packer_plugins = {
     url = "https://github.com/lukas-reineke/indent-blankline.nvim"
   },
   ["iron.nvim"] = {
-    config = { "\27LJ\2\n‡\5\0\0\a\0\21\1\0286\0\0\0'\2\1\0B\0\2\0029\0\2\0005\2\15\0005\3\b\0005\4\6\0005\5\4\0005\6\3\0=\6\5\5=\5\a\4=\4\t\0036\4\0\0'\6\n\0B\4\2\0029\4\v\0049\4\f\0049\4\r\4*\6\0\0B\4\2\2=\4\14\3=\3\16\0025\3\17\0=\3\18\0025\3\19\0=\3\20\2B\0\2\1K\0\1\0\14highlight\1\0\1\vitalic\2\fkeymaps\1\0\f\14interrupt\21<leader>s<space>\14send_line\15<leader>sl\texit\15<leader>sq\14send_file\15<leader>sf\16visual_send\15<leader>sc\nclear\15<leader>cl\16send_motion\15<leader>sc\acr\18<leader>s<cr>\16remove_mark\15<leader>md\16mark_visual\15<leader>mc\16mark_motion\15<leader>mc\14send_mark\15<leader>sm\vconfig\1\0\4\14highlight\0\vconfig\0\23ignore_blank_lines\2\fkeymaps\0\18repl_open_cmd\rbotright\rvertical\nsplit\14iron.view\20repl_definition\1\0\2\18repl_open_cmd\0\20repl_definition\0\vpython\1\0\1\vpython\0\fcommand\1\0\1\fcommand\0\1\2\0\0\fipython\nsetup\14iron.core\frequireµæÌ™\19™³æþ\3\0" },
     loaded = true,
     path = "/Users/bishal/.local/share/nvim/site/pack/packer/start/iron.nvim",
     url = "https://github.com/Vigemus/iron.nvim"
@@ -259,7 +263,7 @@ _G.packer_plugins = {
     url = "https://github.com/nvim-telescope/telescope.nvim"
   },
   ["toggleterm.nvim"] = {
-    config = { "\27LJ\2\ng\0\0\3\0\4\0\a6\0\0\0'\2\1\0B\0\2\0029\0\2\0005\2\3\0B\0\2\1K\0\1\0\1\0\2\17open_mapping\n<C-j>\14direction\15horizontal\nsetup\15toggleterm\frequire\0" },
+    config = { "\27LJ\2\ng\0\0\3\0\4\0\a6\0\0\0'\2\1\0B\0\2\0029\0\2\0005\2\3\0B\0\2\1K\0\1\0\1\0\2\14direction\15horizontal\17open_mapping\n<C-j>\nsetup\15toggleterm\frequire\0" },
     loaded = true,
     path = "/Users/bishal/.local/share/nvim/site/pack/packer/start/toggleterm.nvim",
     url = "https://github.com/akinsho/toggleterm.nvim"
@@ -268,6 +272,30 @@ _G.packer_plugins = {
     loaded = true,
     path = "/Users/bishal/.local/share/nvim/site/pack/packer/start/undotree",
     url = "https://github.com/mbbill/undotree"
+  },
+  ["vim-apm"] = {
+    loaded = true,
+    path = "/Users/bishal/.local/share/nvim/site/pack/packer/start/vim-apm",
+    url = "https://github.com/ThePrimeagen/vim-apm"
+  },
+  ["vim-dadbod"] = {
+    loaded = true,
+    path = "/Users/bishal/.local/share/nvim/site/pack/packer/start/vim-dadbod",
+    url = "https://github.com/tpope/vim-dadbod"
+  },
+  ["vim-dadbod-completion"] = {
+    after_files = { "/Users/bishal/.local/share/nvim/site/pack/packer/opt/vim-dadbod-completion/after/plugin/vim_dadbod_completion.lua", "/Users/bishal/.local/share/nvim/site/pack/packer/opt/vim-dadbod-completion/after/plugin/vim_dadbod_completion.vim" },
+    config = { "\27LJ\2\n@\0\0\2\0\3\0\0056\0\0\0009\0\1\0)\1\1\0=\1\2\0K\0\1\0#db_completion_show_table_alias\6g\bvim\0" },
+    loaded = false,
+    needs_bufread = false,
+    only_cond = false,
+    path = "/Users/bishal/.local/share/nvim/site/pack/packer/opt/vim-dadbod-completion",
+    url = "https://github.com/kristijanhusak/vim-dadbod-completion"
+  },
+  ["vim-dadbod-ui"] = {
+    loaded = true,
+    path = "/Users/bishal/.local/share/nvim/site/pack/packer/start/vim-dadbod-ui",
+    url = "https://github.com/kristijanhusak/vim-dadbod-ui"
   },
   ["vim-fugitive"] = {
     loaded = true,
@@ -287,26 +315,18 @@ _G.packer_plugins = {
 }
 
 time([[Defining packer_plugins]], false)
--- Config for: iron.nvim
-time([[Config for iron.nvim]], true)
-try_loadstring("\27LJ\2\n‡\5\0\0\a\0\21\1\0286\0\0\0'\2\1\0B\0\2\0029\0\2\0005\2\15\0005\3\b\0005\4\6\0005\5\4\0005\6\3\0=\6\5\5=\5\a\4=\4\t\0036\4\0\0'\6\n\0B\4\2\0029\4\v\0049\4\f\0049\4\r\4*\6\0\0B\4\2\2=\4\14\3=\3\16\0025\3\17\0=\3\18\0025\3\19\0=\3\20\2B\0\2\1K\0\1\0\14highlight\1\0\1\vitalic\2\fkeymaps\1\0\f\14interrupt\21<leader>s<space>\14send_line\15<leader>sl\texit\15<leader>sq\14send_file\15<leader>sf\16visual_send\15<leader>sc\nclear\15<leader>cl\16send_motion\15<leader>sc\acr\18<leader>s<cr>\16remove_mark\15<leader>md\16mark_visual\15<leader>mc\16mark_motion\15<leader>mc\14send_mark\15<leader>sm\vconfig\1\0\4\14highlight\0\vconfig\0\23ignore_blank_lines\2\fkeymaps\0\18repl_open_cmd\rbotright\rvertical\nsplit\14iron.view\20repl_definition\1\0\2\18repl_open_cmd\0\20repl_definition\0\vpython\1\0\1\vpython\0\fcommand\1\0\1\fcommand\0\1\2\0\0\fipython\nsetup\14iron.core\frequireµæÌ™\19™³æþ\3\0", "config", "iron.nvim")
-time([[Config for iron.nvim]], false)
--- Config for: toggleterm.nvim
-time([[Config for toggleterm.nvim]], true)
-try_loadstring("\27LJ\2\ng\0\0\3\0\4\0\a6\0\0\0'\2\1\0B\0\2\0029\0\2\0005\2\3\0B\0\2\1K\0\1\0\1\0\2\17open_mapping\n<C-j>\14direction\15horizontal\nsetup\15toggleterm\frequire\0", "config", "toggleterm.nvim")
-time([[Config for toggleterm.nvim]], false)
 -- Config for: gitsigns.nvim
 time([[Config for gitsigns.nvim]], true)
 try_loadstring("\27LJ\2\n6\0\0\3\0\3\0\0066\0\0\0'\2\1\0B\0\2\0029\0\2\0B\0\1\1K\0\1\0\nsetup\rgitsigns\frequire\0", "config", "gitsigns.nvim")
 time([[Config for gitsigns.nvim]], false)
--- Config for: Comment.nvim
-time([[Config for Comment.nvim]], true)
-try_loadstring("\27LJ\2\n5\0\0\3\0\3\0\0066\0\0\0'\2\1\0B\0\2\0029\0\2\0B\0\1\1K\0\1\0\nsetup\fComment\frequire\0", "config", "Comment.nvim")
-time([[Config for Comment.nvim]], false)
 -- Config for: indent-blankline.nvim
 time([[Config for indent-blankline.nvim]], true)
 try_loadstring("\27LJ\2\n1\0\0\3\0\3\0\0066\0\0\0'\2\1\0B\0\2\0029\0\2\0B\0\1\1K\0\1\0\nsetup\bibl\frequire\0", "config", "indent-blankline.nvim")
 time([[Config for indent-blankline.nvim]], false)
+-- Config for: toggleterm.nvim
+time([[Config for toggleterm.nvim]], true)
+try_loadstring("\27LJ\2\ng\0\0\3\0\4\0\a6\0\0\0'\2\1\0B\0\2\0029\0\2\0005\2\3\0B\0\2\1K\0\1\0\1\0\2\14direction\15horizontal\17open_mapping\n<C-j>\nsetup\15toggleterm\frequire\0", "config", "toggleterm.nvim")
+time([[Config for toggleterm.nvim]], false)
 -- Config for: nvim-ts-autotag
 time([[Config for nvim-ts-autotag]], true)
 try_loadstring("\27LJ\2\n=\0\0\3\0\3\0\0066\0\0\0'\2\1\0B\0\2\0029\0\2\0B\0\1\1K\0\1\0\nsetup\20nvim-ts-autotag\frequire\0", "config", "nvim-ts-autotag")
@@ -315,8 +335,18 @@ time([[Config for nvim-ts-autotag]], false)
 time([[Config for neovim]], true)
 try_loadstring("\27LJ\2\n9\0\0\3\0\3\0\0056\0\0\0009\0\1\0'\2\2\0B\0\2\1K\0\1\0\26colorscheme rose-pine\bcmd\bvim\0", "config", "neovim")
 time([[Config for neovim]], false)
+-- Config for: Comment.nvim
+time([[Config for Comment.nvim]], true)
+try_loadstring("\27LJ\2\n5\0\0\3\0\3\0\0066\0\0\0'\2\1\0B\0\2\0029\0\2\0B\0\1\1K\0\1\0\nsetup\fComment\frequire\0", "config", "Comment.nvim")
+time([[Config for Comment.nvim]], false)
 vim.cmd [[augroup packer_load_aucmds]]
 vim.cmd [[au!]]
+  -- Filetype lazy-loads
+time([[Defining lazy-load filetype autocommands]], true)
+vim.cmd [[au FileType sql ++once lua require("packer.load")({'vim-dadbod-completion'}, { ft = "sql" }, _G.packer_plugins)]]
+vim.cmd [[au FileType mysql ++once lua require("packer.load")({'vim-dadbod-completion'}, { ft = "mysql" }, _G.packer_plugins)]]
+vim.cmd [[au FileType plsql ++once lua require("packer.load")({'vim-dadbod-completion'}, { ft = "plsql" }, _G.packer_plugins)]]
+time([[Defining lazy-load filetype autocommands]], false)
   -- Event lazy-loads
 time([[Defining lazy-load event autocommands]], true)
 vim.cmd [[au InsertEnter * ++once lua require("packer.load")({'nvim-autopairs'}, { event = "InsertEnter *" }, _G.packer_plugins)]]

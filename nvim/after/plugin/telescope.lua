@@ -5,3 +5,5 @@ vim.keymap.set('n', '<C-p>', builtin.git_files, { desc = 'Telescope find git fil
 vim.keymap.set('n', '<leader>ps', function()
  	builtin.grep_string({ search = vim.fn.input("Grep > ")});
 end)
+vim.keymap.set("n", "<leader>gd", "<cmd>Telescope lsp_implementations<cr>", { desc = "LSP Implementations" })
+

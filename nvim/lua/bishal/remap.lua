@@ -30,4 +30,29 @@ vim.keymap.set('n', '<leader>ca', vim.lsp.buf.code_action, { desc = "Global Code
 vim.keymap.set("n", "<leader>q", vim.diagnostic.setloclist, { desc = "Open diagnostics in location list" })
 vim.keymap.set("n", "<leader>c", ":copen<CR>", { desc = "Open quickfix list" })
 vim.keymap.set("n", "<leader>cc", ":cclose<CR>", { desc = "Close quickfix list" })
+--for repl command in ironvim
+vim.keymap.set('n', '<leader>rp', function()
+  require("iron.core").repl_for("python")
+end, { noremap = true, silent = true, desc = "Open Python REPL (iron.nvim)" })
 
+--terminal escape remap
+vim.api.nvim_set_keymap('t', '<Esc>', [[<C-\><C-n>]], { noremap = true })
+
+--python running with keymap
+vim.keymap.set("n", "<leader>rp", function ()
+    vim.cmd("w")
+    vim.cmd("!python %")
+end,  {desc = "Run python script"})
+
+vim.keymap.set({ "n", "v" }, "<leader>d", "\"_d")
+-- time
+vim.keymap.set("n", "<leader>wt", ":WakaTimeToday<CR>", { desc = "Show WakaTime today" })
+vim.keymap.set("n", "<C-d>", "<C-d>zz")
+vim.keymap.set("n", "<C-u>", "<C-u>zz")
+vim.keymap.set("n", "n", "nzzzv")
+vim.keymap.set("n", "N", "Nzzzv")
+vim.keymap.set("n", "<leader><leader>", function()
+    vim.cmd("so")
+end)
+-- greatest remap ever
+-- vim.keymap.set("x", "<leader>p", [["_dP]])

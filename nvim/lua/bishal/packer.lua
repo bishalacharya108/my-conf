@@ -54,6 +54,7 @@ return require("packer").startup(function(use)
 	use("hrsh7th/cmp-buffer") -- Buffer source
 	use("hrsh7th/cmp-path") -- File system path source
 	use("saadparwaiz1/cmp_luasnip") -- Luasnip completion source
+	use("hrsh7th/cmp-cmdline") -- commandline completion
 
 	-- Snippets
 	use("L3MON4D3/LuaSnip") -- Snippet engine
@@ -119,35 +120,22 @@ return require("packer").startup(function(use)
 	--iron for jupyter
 	use({
 		"Vigemus/iron.nvim",
+	})
+	use("tpope/vim-dadbod")
+	use("kristijanhusak/vim-dadbod-ui")
+	use({
+		"kristijanhusak/vim-dadbod-completion",
+		ft = { "sql", "mysql", "plsql" },
+		dependencies = {
+			"hrsh7th/nvim-cmp",
+			"tpope/vim-dadbod",
+		},
 		config = function()
-			require("iron.core").setup({
-				config = {
-					repl_definition = {
-						python = {
-							command = { "ipython" },
-						},
-					},
-					repl_open_cmd = require("iron.view").split.vertical.botright(0.4),
-				},
-				keymaps = {
-					send_motion = "<leader>sc",
-					visual_send = "<leader>sc",
-					send_file = "<leader>sf",
-					send_line = "<leader>sl",
-					send_mark = "<leader>sm",
-					mark_motion = "<leader>mc",
-					mark_visual = "<leader>mc",
-					remove_mark = "<leader>md",
-					cr = "<leader>s<cr>",
-					interrupt = "<leader>s<space>",
-					exit = "<leader>sq",
-					clear = "<leader>cl",
-				},
-				highlight = {
-					italic = true,
-				},
-				ignore_blank_lines = true,
-			})
+			vim.g.db_completion_show_table_alias = 1
 		end,
+	})
+	-- Using packer.nvim
+	use({
+		"ThePrimeagen/vim-apm",
 	})
 end)
